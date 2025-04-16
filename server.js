@@ -93,7 +93,7 @@ app.get("/events", (req, res) => {
         ctime: 1737103779000,
       }),
     },
-    { event: "end", data: "" },
+    // { event: "end", data: "" },
   ];
 
   let i = 0;
