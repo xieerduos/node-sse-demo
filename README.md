@@ -2,6 +2,8 @@
 
 微信小程序 Server-sent events（SSE） demo
 
+https://docs.ffffee.com/wechat/微信小程序/微信小程序sse-demo.html
+
 ## quick start
 
 1. node 版本
