@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SSE Example</title>
+  </head>
+  <body>
+    <h2>SSE Event Data:</h2>
+    <pre id="output"></pre>
+
+    <script>
+      const output = document.getElementById("output");
+      const eventSource = new EventSource("/events");
+
+      eventSource.addEventListener("start", (event) => {
+        output.innerText += `Start event: ${event.data}\n\n`;
+      });
+
+      eventSource.addEventListener("doing", (event) => {
+        const data = JSON.parse(event.data);
+        output.innerText += `Doing event: ${JSON.stringify(data, null, 2)}\n\n`;
+      });
+
+      eventSource.addEventListener("end", (event) => {
+        output.innerText += `End of events.\n`;
+        eventSource.close();
+      });
+
+      eventSource.onerror = (err) => {
+        output.innerText += `EventSource failed: ${err}\n`;
+        eventSource.close();
+      };
+    </script>
+  </body>
+</html>
